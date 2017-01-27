@@ -1,0 +1,20 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+ 
+}
+
+.navbar-inverse .navbar-brand, .navbar-brand:hover {
+	color:white;
+}
+
+.navbar{
+	margin-bottom: 0px !important;
+	margin-top: -25px;
+	border-radius: 0px !important;
+}
+
+#jumbo {
+	border-top: 20px solid gray;
+    
+}
+

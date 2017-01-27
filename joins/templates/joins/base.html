@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+  	<link href="https://fonts.googleapis.com/css?family=Allerta+Stencil|Special+Elite&effect=3d" rel="stylesheet"> 
+ <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://icons.iconarchive.com/icons/jommans/briefness/256/Internet-Browser-icon.png">
+    
+
+    <title>My second Website</title>
+
+    <!-- Bootstrap core CSS
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+       -->  
+      <link href="{% static 'css/bootstrap.min.css' %}" rel='stylesheet'>
+     
+    <!-- Custom styles for this template
+    <link href="http://v4-alpha.getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
+                    Basically just my css below -->
+    <link href="{% static 'css/jumbotron.css' %}" rel='stylesheet'>
+    <!-- FONTAWSOME ICON LINK BELOW -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel='stylesheet'>
+    
+    {% block styles %}
+    {% endblock %}
+  </head>
+
+  <body>
+
+    
+
+    
+
+    
+ 
+{% block content %}
+
+{% endblock %}
+ <div class="row" id="wrapper"  style="background-color:#111; margin-top:80px;">
+<div class="container"  id="content" style=' padding:20px;'>
+     
+
+      <footer id="footer">
+        <p>&copy; Darshu Corp 2017  </p>
+      </footer>
+    </div> 
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    <script>
+    		$(document).ready(function(){
+    			{% block jquery %}
+    			{% endblock %}
+    			    		});
+    </script>
+    
+  </body>
+</html>

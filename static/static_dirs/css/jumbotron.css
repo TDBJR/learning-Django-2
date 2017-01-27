@@ -1,0 +1,44 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+ 
+}
+
+.navbar-inverse .navbar-brand, .navbar-brand:hover {
+	color:white;
+}
+
+.navbar{
+	margin-bottom: 0px !important;
+	margin-top: -25px ;
+	border-radius: 0px !important;
+}
+
+#jumbo {
+	border-top: 20px solid #333;
+	border-bottom:20px solid #333;
+    
+}
+
+.armyText{
+	font-family:'Special Elite', cursive;
+}
+
+.menuRow {
+	padding-top:40px;
+	min-height:200px;
+	text-align:center; 
+	background-color: ghostwhite; 
+	color: #222 !important;	
+}
+#stats{
+	box-shadow: 10px 10px 5px #888888;
+}
+
+#content{
+	color:white;
+	background-color:#111;
+}
+
+#btn-learn-more{
+	box-shadow: 5px 5px 5px #888888;
+}

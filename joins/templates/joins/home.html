@@ -1,0 +1,17 @@
+{% extends "joins/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<style>
+		body {
+			background: url("{% static 'img/beach2.jpg' %}") no-repeat center center fixed;
+			-webkit-background-size:cover;
+			-moz-background-size:cover;
+			-o-background-size:cover;
+			background-size:cover;
+		}
+</style>
+
+<h1> This is the Main Site Page</h1>
+<h3>Please proceed to to </h3><a href="/joins/"> <h3>The Joins Home Page</h3> </a>
+{% endblock %}

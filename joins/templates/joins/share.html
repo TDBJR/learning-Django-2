@@ -1,0 +1,172 @@
+{% extends "joins/base.html" %}
+{% load staticfiles %}
+
+{% block jquery %}
+ $signUpCount = {{count}};
+ //$(".progress-bar").css("width","80%").attr("aria-valuenow","80%").text("80%");
+ 
+ function completeBlock(progressBarId){
+ $(progressBarId).css("width", "100%").attr("aria-valuenow","100").text("Completed");  
+ }
+ function setNewPerc(progressBarId, percetNum, newText){
+ 		$(progressBarId).css("width", percetNum + "%").attr("aria-valuenow", percetNum).text(newText);
+ }
+ 
+ // <!--  You get the Percent by taking the current number and dividing it by the max number then multiply it by 100 -->  
+ if($signUpCount >= 0 && $signUpCount <5) {
+ 			$newPercent = $signUpCount/5 * 100;
+ 			setNewPerc("#count5", $newPercent, " Almost....There...  " + (5-$signUpCount) + " Friends To Go!");
+  	} 
+ 	else if ($signUpCount>=5 && $signUpCount < 15) {
+ 	  completeBlock("#count5")
+//<!--  For each new bar you need to subtract the previous goal post number from the current count and division number-->
+//<!--  If you want the next bar to start at 0% instead of 33% -->
+ 	  $newCount = $signUpCount-5;
+ 	  $newPercent = $newCount/(15-5) * 100;
+ 	  setNewPerc("#count15", $newPercent, " Almost....There...  " + (15-$signUpCount) + " Friends To Go!");
+ 	}  
+    else if ($signUpCount>=15 && $signUpCount < 25) {
+    	completeBlock("#count5")
+    	completeBlock("#count15")
+    	
+    	$newCount = $signUpCount-15;
+ 	 	$newPercent = $newCount/(25-15) * 100;   
+ 	 	setNewPerc("#count25", $newPercent, " Almost....There...  " + (25-$signUpCount) + " Friends To Go!");
+ 	 	}
+ 	 	else if ($signUpCount>=25 && $signUpCount < 50) {
+    	completeBlock("#count5")
+    	completeBlock("#count15")
+    	completeBlock("#count25")
+    	
+    	$newCount = $signUpCount-25;
+ 	 	$newPercent = $newCount/(50-25) * 100;   
+ 	 	setNewPerc("#count50", $newPercent, " Almost....There...  " + (50-$signUpCount) + " Friends To Go!"); 	 	 	  
+ 	}
+	else {
+	completeBlock("#count5")
+	completeBlock("#count15")
+	completeBlock("#count25")
+	completeBlock("#count50") 
+ }
+ 
+{% endblock %}
+
+{% block content %}
+{% include "joins/navbar.html " %}
+<style>
+
+     body{
+     	background-color: #e65c00;
+     	background-image: url("css/img/Background.jpg ");
+     }
+</style>
+
+
+<div class="jumbotron" style='background-color:#e65c00;'>
+	  <!--      <h1> test {{ friends }} </h1>   -->
+	      		<div class='row' style=' background-color: lightgray; margin-top:50px;'>
+	      		
+	      		<div class='col-md-4 pull-right' style='margin-right: 250px; margin-top: 50px; text-align:center;'>
+	      													<!--  fa-5x increase the size of the fa-icon -->
+	      														<i class='fa fa-share-alt fa-5x' style='color: #007bb6; margin-bottom:-30px'></i>
+					        <h1 class="display-3">Invite Friends &amp; Earn Rewards!</h1>
+					        <p>Welcome to the Site. Be sure to sign up with a referral code if you were referred by a friend, They gain special bonuses for each recruitment!</p>
+					        <div class='well'>
+					        		{{ref_url}}
+					        </div>
+					        		Share<br/>
+					   <!--  target="_blank make it so that when you click on the link it opens a new page -->
+					   <a href="https://www.facebook.com/sharer/sharer.php?u={{ref_url}}" target="_blank">    		
+					        <i class='fa fa-facebook-square fa-5x' style='color:#3b5998;'></i>
+					  </a>   
+					  <a href="https://twitter.com/home?status=Check%20out%20this%20site" target="_blank">
+					        <i class='fa fa-twitter-square fa-5x' style='color:#4099ff;'></i>
+					  </a> 
+					  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ ref_url }}&title=Check%20out%20this%20site&summary=Sign%20up%20with%20my%20Link%20to%20join%20our%20community%20and%20earn%20rewards&source={{ ref_url }}" target="_blank">     
+					        <i class='fa fa-linkedin-square fa-5x' style='color:#007bb6;'></i>
+					  </a>
+					  <a href="http://www.reddit.com/submit?url={{ ref_url }}&title=Sign%20up%20with%20my%20Link%20to%20join%20our%20community%20and%20earn%20rewards" target="_blank">
+					        <i class='fa fa-reddit-square fa-5x' style='color:#900020;'></i>
+					  </a>      
+					  <a href='https://plus.google.com/share?url=http://codingforentrepreneurs.com' target="_blank">
+					        <i class='fa fa-google-plus-square fa-5x' style='color:#d34836;'></i>
+					  </a>      
+			        </div>
+			        	      		
+	      		<div class='col-md-5 pull-left' style='margin-left: 100px; ' > 				        
+					        	<img src="{% static 'img/hl.jpg' %}"  id="ship" class='img-responsive  img-rounded' style='max-width: 800px; '/>	   
+			        </div>			        
+	      	</div>
+	      
+    </div>
+
+<div class='container' style='text-align:center; color:black'>
+		<div class='row' style="">
+				
+					<!-- <h3>This is your id</h3>				
+						{{ ref_id }}<br> -->
+				
+				
+						<h4 style="color:black">Total Amount Of Friends Joined</h4><h1>{{ count }}</h1><br>
+					
+						<h1>{{ friends }}</h1>
+				
+				
+			<!-- 			<h4>Link To Your Share Page!</h4> 						
+                              <div class='well'>{{ref_url}}</div>    -->		
+<div class='row'>
+		<div class="col-sm-3">	
+		<h3>5 Joined</h3>						
+				<div class="progress">
+  						<div class="progress-bar" id="count5" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style=" width: 0%;">0%</div>
+				</div>
+				<h3>Reward name</h3><hr/>
+				<h4>Rewards Include</h4>
+				<ul >
+					<li >Reward 1</li>
+					<li>Reward 2</li>
+				</ul>
+		</div>
+		<div class="col-sm-3">	
+		<h3>15 Joined</h3>						
+				<div class="progress">
+  						<div class="progress-bar" id="count15" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
+				</div>
+				<h3>Reward name</h3><hr/>
+				<h4>Rewards Include</h4>
+				<ul>
+					<li>Reward 1</li>
+					<li>Reward 2</li>
+				</ul>
+		</div>
+		<div class="col-sm-3">	
+		<h3>25 Joined</h3>						
+				<div class="progress">
+  						<div class="progress-bar" id="count25" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
+				</div>
+				<h3>Reward name</h3><hr/>
+				<h4>Rewards Include</h4>
+				<ul>
+					<li>Reward 1</li>
+					<li>Reward 2</li>
+				</ul>
+		</div>
+		<div class="col-sm-3">	
+		<h3>50 Joined</h3>						
+				<div class="progress">
+  						<div class="progress-bar" id="count50" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
+				</div>
+				<h3>Reward name</h3><hr/>
+				<h4>Rewards Include</h4>
+				<ul>
+					<li>Reward 1</li>
+					<li>Reward 2</li>
+				</ul>
+		</div>
+</div>
+
+
+				
+		</div>
+</div>
+{% endblock %}
