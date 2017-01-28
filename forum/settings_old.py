@@ -13,7 +13,7 @@ SECRET_KEY = '#ottjl=a-$tf$szen7-r23_vrio64^t@fp402@6eszd_n4&!%t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
